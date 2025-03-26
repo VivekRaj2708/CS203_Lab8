@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="Input">Input:</label>
+        <input type="string" name="Input" />
+
+    </form>
+
+    <button onclick="submit()" id="insert">Insert</button>
+    <button onclick="get()">Get</button>
+    <div></div>
+</body>
+<script>
+
+    const form = document.querySelector("form");
+    const input = document.querySelector("input");
+    const div = document.querySelector("div");
+    function submit(e) {
+        fetch("http://34.132.200.230:9567/isrt/" + input.value).then(response => response.json()).then((response) => {
+            div.innerHTML = JSON.stringify(response)
+        })
+    }
+
+    function get(e) {
+        fetch("http://34.132.200.230:9567/search/" + input.value).then(response => response.json()).then((response) => {
+            div.innerHTML = JSON.stringify(response)
+        })
+    }
+
+    document.getElementById("insert").addEventListener("click", submit);
+</script>
+
+</html>

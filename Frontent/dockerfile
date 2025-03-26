@@ -1,0 +1,8 @@
+FROM python:3.13-slim
+
+WORKDIR /api
+RUN pip install --no-cache-dir "fastapi[standard]" elasticsearch
+COPY . .
+ENV ELASTICSEARCH_HOST=http://elasticsearch:9200
+CMD ["sh",  "-c", "fastapi run client.py --port 9567"]
+

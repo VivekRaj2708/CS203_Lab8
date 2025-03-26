@@ -7,7 +7,7 @@ app = FastAPI()
 # Connect to Elasticsearch
 ELASTICSEARCH_HOST = os.getenv("ELASTICSEARCH_HOST", "http://localhost:9200")
 es = Elasticsearch([ELASTICSEARCH_HOST])
-INDEX_NAME = "documents"
+INDEX_NAME = "india"
 
 # Ensure index exists
 def create_index():
